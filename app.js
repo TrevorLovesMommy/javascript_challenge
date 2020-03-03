@@ -40,9 +40,25 @@ button.on("click", function() {
     var filterdData = data.filter(report => report.datetime === inputValue);
     console.log("here's the data");
     console.log(filterdData);
+
+    ////remove all rows https://stackoverflow.com/questions/7271490/delete-all-rows-in-an-html-table
+    d3.select("tbody").remove();
+
+
+     
 });
 
-// ----------- create a custom filtering fucntion based on input date -------------
+inputValue.forEach(function(alienReport){
+    //use d3 to append one row per alien report
+    var row = tbody.append("tr");
+    //use d3 to append a cell for each value in the alien report object
+    Object.entries(alienReport).forEach(function([key,value]){
+        var cell=row.append("td");
+        //for every dell, pupluate the value
+        cell.text(value);
+    });
+});
+
 
 
 
