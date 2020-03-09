@@ -37,31 +37,40 @@ button.on("click", function() {
 
     //get a reference to the input element on the page with the class "form-control"
     var inputElement = d3.select(".form-control");
+    console.log(inputElement);
     
+    // Use D3 to select the dropdown menu
+    var dropdownMenu = d3.select("#selDataset");
+    // Assign the value of the dropdown menu option to a variable
+    var category = dropdownMenu.property("value");
+    console.log(`here is the category ${category}`);
+
+
     //get the value property of the input element
     var inputValue = inputElement.property("value");
     console.log(`here's the input value ${inputValue}`);
 
-    //filter data based on inputValue
-    var filteredData = tableData.filter(report => report.datetime === inputValue);
-    console.log("here's the data");
-    console.log(filteredData);
+    if (category === 'datetime') {
+        var filteredData = tableData.filter(report => report.datetime === inputValue);
+    }
 
-    ////This did not work to clear and reload filtered data
-    // d3.select("tbody").remove();
-    // tbody.html("");
+    if (category === 'city') {
+        var filteredData = tableData.filter(report => report.city === inputValue);
+    }
+
+    if (category === 'state') {
+        var filteredData = tableData.filter(report => report.state === inputValue);
+    }
+
+    if (category === 'country') {
+        var filteredData = tableData.filter(report => report.country === inputValue);
+    }
+    
+    if (category === 'shape') {
+        var filteredData = tableData.filter(report => report.shape === inputValue);
+    }
 
     populateTable(filteredData);
 
 });
-
-// d3.select("#filter-btn").on("click", buttonClick);
-// // Build table with data.js
-// buildTable(tableData);
-
-
-// var clearEntries = d3.select("#reset-btn");
-// clearEntries.on("click", function() {
-//   location.reload();
-// });
 

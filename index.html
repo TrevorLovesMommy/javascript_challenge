@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="static/css/style.css">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="plots.js"></script>
 </head>
 
 <body>
@@ -42,23 +41,24 @@
                         <label for="date">Enter a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
                       </li>
+
+
+                      <li class="filter list-group-item">
+                        <label for="date">Select from Pulldown</label>
+
+                        <select id="selDataset">
+                          <option value="datetime">DateTime</option>
+                          <option value="city">City</option>
+                          <option value="state">State</option>
+                          <option value="country">Country</option>
+                          <option value="shape">Shape</option>
+                        </select>
+                      
                     </ul>
                   </div>
                   <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                  <!-- <button id="reset-btn" type="button" class="btn btn-default">Reset Table</button> -->
                 </form>
                 
-                <br>
-                <br>
-                <div id="plot"><label for="date">Select from Menu</label></div>
-
-                <select id="selDataset" onchange="getData(this.value)">
-                  <option value="datetime" selected>DateTime</option>
-                  <option value="city">City</option>
-                  <option value="state">State</option>
-                  <option value="country">Country</option>
-                  <option value="shape">Shape</option>
-                </select>
           
               </div>
             </div>
