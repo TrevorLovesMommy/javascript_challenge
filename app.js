@@ -33,22 +33,20 @@ populateTable(tableData);
 //--------use the "on" function in d3 and inline function to record an event--------
 button.on("click", function() {
     console.log("a button was clicked");
- 
 
     //get a reference to the input element on the page with the class "form-control"
     var inputElement = d3.select(".form-control");
     console.log(inputElement);
+
+    //get the value property of the input element
+    var inputValue = inputElement.property("value");
+    console.log(`here's the input value ${inputValue}`);
     
     // Use D3 to select the dropdown menu
     var dropdownMenu = d3.select("#selDataset");
     // Assign the value of the dropdown menu option to a variable
     var category = dropdownMenu.property("value");
     console.log(`here is the category ${category}`);
-
-
-    //get the value property of the input element
-    var inputValue = inputElement.property("value");
-    console.log(`here's the input value ${inputValue}`);
 
     if (category === 'datetime') {
         var filteredData = tableData.filter(report => report.datetime === inputValue);
